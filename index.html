@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emploi du Temps</title>
+    <style>
+        /* إعدادات الخط والألوان الأساسية */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            padding: 10px;
+            margin: 0;
+            direction: ltr;
+            box-sizing: border-box;
+        }
+
+        .timetable-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timetable-header {
+            background-color: #0a558c;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .timetable-header h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* يجعل الجدول ثابت الحجم */
+            font-size: 0.85em; /* تصغير حجم الخط */
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            word-wrap: break-word; /* لتجنب زيادة حجم الأعمدة */
+        }
+
+        th {
+            background-color: #0a558c;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* ألوان خلفية لكل يوم لإضافة الحيوية */
+        tr:nth-child(odd) {
+            background-color: #f9fafb;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eef3f7;
+        }
+
+        td {
+            font-size: 0.85em;
+            color: #333;
+        }
+
+        /* تصميم النصوص لعناوين المواد وأسماء الأساتذة */
+        .subject {
+            font-weight: bold;
+            color: #005c99;
+        }
+
+        .instructor {
+            font-size: 0.75em; /* تصغير حجم النص لأسماء الأساتذة */
+            color: #777;
+        }
+
+        /* جعل الجدول متجاوباً مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            th, td {
+                padding: 6px;
+                font-size: 0.75em;
+            }
+
+            .timetable-header h2 {
+                font-size: 1em;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                color: #005c99;
+            }
+        }
+
+        @media (max-width: 500px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th, td {
+                padding: 5px;
+                font-size: 0.7em;
+                text-align: left;
+            }
+
+            th {
+                background-color: #0a558c;
+                color: #ffffff;
+                text-align: center;
+            }
+
+            tr {
+                margin-bottom: 5px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="timetable-container">
+    <div class="timetable-header">
+        <h2>Emploi du Temps - Institut National de Formation Supérieure Paramedicale de Mostaganem</h2>
+        <p>Semestre : 1 | Année : 2024/2025</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>08:30 - 10:00</th>
+                <th>10:15 - 11:45</th>
+                <th>13:30 - 14:45</th>
+                <th>15:00 - 16:30</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Jour">Dimanche</td>
+                <td data-label="08:30 - 10:00"><span class="subject">Expression écrite et orale</span><br><span class="instructor">M. Abbassa</span></td>
+                <td data-label="10:15 - 11:45"><span class="subject">Hygiène Hospitalière</span><br><span class="instructor">M. Koibiche</span></td>
+                <td data-label="13:30 - 14:45"><span class="subject">Terminologie Médicale</span><br><span class="instructor">Mme. Kherif</span></td>
+                <td data-label="15:00 - 16:30"><span class="subject">Hygiène Hospitalière</span><br><span class="instructor">M. Koibiche</span></td>
+            </tr>
+            <tr>
+                <td data-label="Jour">Lundi</td>
+                <td colspan="2" data-label="08:30 - 11:45"><span class="subject">Anatomie Physiologique</span><br><span class="instructor">M. Ammour</span></td>
+                <td colspan="2" data-label="13:30 - 16:30"><span class="subject">Anthropologie / Psychologie / Psychosociologie</span><br><span class="instructor">Mme. Rouabh</span></td>
+            </tr>
+            <tr>
+                <td data-label="Jour">Mardi</td>
+                <td data-label="08:30 - 10:00"><span class="subject">Anatomie Physiologique</span><br><span class="instructor">M. Ammour</span></td>
+                <td data-label="10:15 - 11:45"><span class="subject">Soins de Base</span><br><span class="instructor">Mme. Oggadi</span></td>
+                <td colspan="2" data-label="13:30 - 16:30"><span class="subject">Législation / Éthique Pro / Déontologie</span><br><span class="instructor">M. Dait</span></td>
+            </tr>
+            <tr>
+                <td data-label="Jour">Mercredi</td>
+                <td data-label="08:30 - 10:00"><span class="subject">Expression écrite et orale</span><br><span class="instructor">M. Abbassa</span></td>
+                <td data-label="10:15 - 11:45"><span class="subject">Soins de Base</span><br><span class="instructor">Mme. Oggadi</span></td>
+                <td colspan="2" data-label="13:30 - 16:30"><span class="subject">Secourisme</span><br><span class="instructor">Mme. Elketroussi</span></td>
+            </tr>
+            <tr>
+                <td data-label="Jour">Jeudi</td>
+                <td colspan="4" data-label="08:30 - 16:30"><span class="subject">Santé Publique / Démographie / Économie de Santé</span><br><span class="instructor">M. Akermi</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
